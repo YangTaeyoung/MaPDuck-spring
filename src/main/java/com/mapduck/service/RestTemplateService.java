@@ -9,6 +9,8 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
 import java.nio.charset.Charset;
+import java.util.Arrays;
+import java.util.List;
 
 @Service
 public class RestTemplateService {
@@ -16,7 +18,7 @@ public class RestTemplateService {
     // Server로 요청을 보내는 서비스이다.
 
     // get방식
-    public Product keyword(String keyword) {
+    public List<Product> keyword(String keyword) {
 
         // uri 빌드
         URI uri = UriComponentsBuilder
@@ -32,7 +34,8 @@ public class RestTemplateService {
 
         RestTemplate restTemplate = new RestTemplate();
 
-        ResponseEntity<Product> result = restTemplate.getForEntity(uri,Product.class);
+        ResponseEntity<Product[]> result = restTemplate.getForEntity(uri, Product[].class);
+        List<Product> result_list = Arrays.asList(result.getBody());
 
         //String result = restTemplate.getForObject(uri, String.class);
         //getForEntity는 응답을 ResponseEntity로 받을 수 있도록 해준다 .
@@ -40,6 +43,6 @@ public class RestTemplateService {
 //        System.out.println(result.getStatusCode());
 //        System.out.println(result.getBody());
 
-        return result.getBody();
+        return result_list;
     }
 }
