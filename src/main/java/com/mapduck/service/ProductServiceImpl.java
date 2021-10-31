@@ -1,10 +1,13 @@
 package com.mapduck.service;
 
+
 import com.mapduck.domain.ProductDto;
+
 import com.mapduck.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
+
 
 /**
  * 작성자 : 강동연
@@ -15,6 +18,7 @@ import java.util.List;
 public class ProductServiceImpl implements ProductService{
 
     private final ProductRepository productRepository;
+
 
     /**
      * 작성자 : 강동연
@@ -36,6 +40,7 @@ public class ProductServiceImpl implements ProductService{
      */
     @Override
     public List<ProductDto> findByKeyword(String keyword) {
+
         return productRepository.findByKeyword(keyword);
     }
 }

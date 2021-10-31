@@ -1,7 +1,9 @@
 package com.mapduck.service;
 
 
+
 import com.mapduck.domain.ProductDto;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -11,6 +13,7 @@ import java.net.URI;
 import java.nio.charset.Charset;
 import java.util.Arrays;
 import java.util.List;
+
 
 /**
  * 작성자 : 강동연
@@ -44,8 +47,10 @@ public class RestTemplateService {
 
         RestTemplate restTemplate = new RestTemplate();
 
+
         ResponseEntity<ProductDto[]> result = restTemplate.getForEntity(uri, ProductDto[].class);
         List<ProductDto> result_list = Arrays.asList(result.getBody()); // 결과 null일 경우 생각해야할듯.
+
 
         //String result = restTemplate.getForObject(uri, String.class);
         //getForEntity는 응답을 ResponseEntity로 받을 수 있도록 해준다 .

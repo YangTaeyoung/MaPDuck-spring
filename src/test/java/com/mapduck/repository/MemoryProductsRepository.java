@@ -1,6 +1,8 @@
 package com.mapduck.repository;
 
+
 import com.mapduck.domain.ProductDto;
+
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -13,6 +15,7 @@ public class MemoryProductsRepository {
 
     @Test
     public void findByKeyword() {
+
         ProductDto productDto1 = new ProductDto();
         productDto1.setTitle("삼성 1");
         productDto1.setDescription("kkkkk");
@@ -29,6 +32,7 @@ public class MemoryProductsRepository {
         repository.save(productDto3);
 
         List<ProductDto> result = repository.findByKeyword("삼성");
+
 
         Assertions.assertThat(result.size()).isEqualTo(2);
 

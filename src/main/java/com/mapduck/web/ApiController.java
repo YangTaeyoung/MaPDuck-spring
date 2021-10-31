@@ -1,12 +1,15 @@
 package com.mapduck.web;
 
+
 import com.mapduck.domain.ProductDto;
 import com.mapduck.service.ProductService;
+
 import com.mapduck.service.RestTemplateService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
 
 /**
  * 작성자: 강동연
@@ -33,13 +36,16 @@ public class ApiController {
     @GetMapping("/danawa")
     public List<ProductDto> getKeyword(@RequestParam String keyword) {
 
+
         System.out.println("keyword:" + keyword);
 
         if (!productService.findByKeyword(keyword).isEmpty()) {
             return productService.findByKeyword(keyword);
+
         } else {
             return templateService.keyword(keyword);
         }
+
     }
 
 }
