@@ -1,6 +1,9 @@
 package com.mapduck.domain;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,18 +15,12 @@ import javax.persistence.Id;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Product {
+public class Company {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // pk를 db에서 알아서 해준다.
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-
-    private String name;
-    private Long company;
-    private String modelName;
-    private String description;
-
-
+    private String korName;
+    private String enName;
 
 }
