@@ -107,6 +107,14 @@
                         prepend-icon="lock"
                         type="password"
                         color="teal lighten-3" />
+
+                        <v-text-field
+                            label="Number"
+                            name="Number"
+                            prepend-icon="phone"
+                            type="text"
+                            color="teal lighten-3" />
+
                       </v-form>
                      <div class="text-center mt-3">
                       <v-btn rounded color="teal lighten-3" dark>SIGN UP</v-btn>
