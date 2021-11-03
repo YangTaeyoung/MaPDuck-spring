@@ -7,6 +7,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+/**
+ * 작성자: 강동연
+ * 작성일: 2021.11.3
+ * 설명: Product Entity
+ */
 @Entity
 @Getter
 @Setter

@@ -4,6 +4,12 @@ import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import lombok.*;
 
+/**
+ * 작성자: 강동연
+ * 작성일: 2021.11.3
+ * 설명: UserDto
+ */
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
