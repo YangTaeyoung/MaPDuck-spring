@@ -15,6 +15,7 @@ import javax.persistence.Id;
 @Entity
 @Getter
 @Setter
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 public class Product {
@@ -25,9 +26,10 @@ public class Product {
 
 
     private String name;
-    private Long company;
+    private Long companyId;
     private String modelName;
     private String description;
+    private String imgPath;
 
 
 

@@ -19,7 +19,7 @@ import java.util.List;
  */
 @RestController
 @Slf4j
-@RequestMapping("/api/client")
+@RequestMapping("/api/product")
 @RequiredArgsConstructor
 public class ProductApiController {
 
@@ -34,9 +34,12 @@ public class ProductApiController {
      * 출력: keyword 값
      * @param keyword : 검색어
      * @return List<ProductDto> : 리스트 형식의 제품</ProductDto>
+     *
+     * 수정일:2021-11-03
+     * 설명: 객체명 수정 "findProducts"
      */
     @GetMapping("/danawa")
-    public List<ProductDto> getKeyword(@RequestParam String keyword) {
+    public List<ProductDto> findProducts(@RequestParam String keyword) {
 
         log.info("keyword: {}", keyword);
 
@@ -46,6 +49,27 @@ public class ProductApiController {
             return templateService.keyword(keyword);
         }
     }
+
+    /**
+     * 작성자:강동연
+     * 작성일:2021.11.03
+     * 설명:제품 등록
+     * 출력: productDto.toString()
+     * @param productDto
+     * @return productDto
+     */
+    @PostMapping("/danawa")
+    public ProductDto addProducts(@RequestBody ProductDto productDto) {
+
+        log.info("productDto: {}", productDto.toString());
+        productService.save(productDto);
+
+        return productDto;
+    }
+
+
+
+
 
 
 

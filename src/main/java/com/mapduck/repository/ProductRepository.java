@@ -11,7 +11,7 @@ import java.util.List;
  */
 public interface ProductRepository {
 
-    ProductDto save(ProductDto productDto);
+    void save(ProductDto productDto);
     List<ProductDto> findByKeyword(String keyword);
 
 }

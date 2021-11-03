@@ -23,7 +23,7 @@ public class ProductDto {
     @NonNull
     private String name;
     @NonNull
-    private String company;
+    private Long companyId;
     @NonNull
     private String modelName;
     private String description;
