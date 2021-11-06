@@ -1,6 +1,6 @@
 package com.mapduck.serivce;
 
-`import com.mapduck.domain.Product;
+import com.mapduck.domain.Product;
 import com.mapduck.dto.ProductDto;
 import com.mapduck.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
