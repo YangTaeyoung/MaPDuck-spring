@@ -1,17 +1,10 @@
 package com.mapduck.repository;
 
-import com.mapduck.dto.ProductDto;
+import com.mapduck.domain.Product;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-/**
- * 작성자: 강동연
- * 작성일: 2021.10.31
- * 설명: 제품 저장소 인터페이스
- */
-public interface ProductRepository {
-
-    void save(ProductDto productDto);
-    List<ProductDto> findByKeyword(String keyword);
-
+public interface ProductRepository extends JpaRepository<Product, Long> {
+    List<Product> findProductByPrNameContainsOrMoNameContainsOrPrCompany_CoName(String prName, String moName, String prCompany_coName);
 }
