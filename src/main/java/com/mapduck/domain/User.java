@@ -44,7 +44,9 @@ public class User {
     @Column(name = "UPDATED_AT")
     private LocalDateTime updatedAt; // date?
 
-
+    @ManyToOne(targetEntity = Role.class, fetch = FetchType.LAZY)
+    @JoinColumn(name = "ROLE")
+    private Role role;
 
 
 }
