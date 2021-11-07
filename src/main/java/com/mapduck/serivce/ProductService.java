@@ -1,5 +1,6 @@
 package com.mapduck.serivce;
 
+import com.mapduck.domain.Product;
 import com.mapduck.dto.ProductDto;
 
 import java.util.List;
@@ -11,7 +12,6 @@ import java.util.List;
  */
 public interface ProductService {
 
-    void save(ProductDto productDto);
+    Product save(ProductDto productDto);
     List<ProductDto> findByKeyword(String keyword);
-
 }

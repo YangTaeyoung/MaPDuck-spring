@@ -28,6 +28,15 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	// implementation 'org.springframework.boot:spring-boot-starter-security'
+
+	// swagger를 사용하기 위한 것.
+	// https://mvnrepository.com/artifact/io.springfox/springfox-boot-starter
+	implementation 'io.springfox:springfox-boot-starter:3.0.0'
+
+	// https://mvnrepository.com/artifact/org.modelmapper/modelmapper
+	implementation 'org.modelmapper:modelmapper:2.4.4'
+	implementation 'io.jsonwebtoken:jjwt:0.9.1'
 	implementation 'org.projectlombok:lombok:1.18.20'
 	annotationProcessor 'org.projectlombok:lombok:1.18.20'
 	runtimeOnly 'com.h2database:h2'
