@@ -2,6 +2,7 @@ package com.mapduck.serivce;
 
 
 import com.mapduck.dto.NaverIdPwDto;
+import com.mapduck.dto.NaverProductDto;
 import com.mapduck.dto.ProductDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.*;
@@ -33,7 +34,7 @@ public class NaverRestTemplateService {
      * @param naverIdPwDto: 네이버 id와 pw로 이루어진 객체
      * @return List<ProductDto>
      */
-    public List<ProductDto> getNaverMyproducts(NaverIdPwDto naverIdPwDto) {
+    public List<NaverProductDto> getNaverMyproducts(NaverIdPwDto naverIdPwDto) {
 
         // uri 빌드
         URI uri = UriComponentsBuilder
@@ -54,8 +55,8 @@ public class NaverRestTemplateService {
 
         RestTemplate restTemplate = new RestTemplate();
         // exchange를 통해 uri와, Get, headers 정보를 넣어서 ProductDto[]를 반환받는다.
-        ResponseEntity<ProductDto[]> result = restTemplate.exchange(uri, HttpMethod.GET, entity, ProductDto[].class);
-        List<ProductDto> result_list = Arrays.asList(Objects.requireNonNull(result.getBody())); // 결과 null일 경우 생각해야할듯.
+        ResponseEntity<NaverProductDto[]> result = restTemplate.exchange(uri, HttpMethod.GET, entity, NaverProductDto[].class);
+        List<NaverProductDto> result_list = Arrays.asList(Objects.requireNonNull(result.getBody())); // 결과 null일 경우 생각해야할듯.
 
         log.info("result.getStatusCode: {}", result.getStatusCode());
 
