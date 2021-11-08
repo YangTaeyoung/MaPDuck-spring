@@ -15,9 +15,7 @@ import javax.persistence.*;
  *
  */
 @Entity
-@Getter
-@Setter
-@ToString
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "PRODUCT")
