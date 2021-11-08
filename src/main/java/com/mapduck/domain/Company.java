@@ -14,9 +14,7 @@ import javax.persistence.*;
  * 수정 내용: 실제 테이블 반영 후 매핑.
  */
 @Entity
-@Getter
-@Setter
-@ToString
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "COMPANY")

@@ -1,9 +1,6 @@
 package com.mapduck.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -17,8 +14,7 @@ import java.time.LocalDateTime;
  * 수정 내용: 실제 테이블 반영 후 매핑.
  */
 @Entity
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "OWN")
