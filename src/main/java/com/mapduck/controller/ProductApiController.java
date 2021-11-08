@@ -59,7 +59,7 @@ public class ProductApiController {
      * @return productDto
      */
     @PostMapping("/danawa")
-    public ProductDto addProducts(@RequestBody ProductDto productDto) {
+    public ProductDto addProduct(@RequestBody ProductDto productDto) {
 
         log.info("productDto: {}", productDto.toString());
         productService.save(productDto);
