@@ -4,6 +4,7 @@ import com.mapduck.domain.Product;
 import com.mapduck.dto.ProductDto;
 import com.mapduck.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +16,7 @@ import java.util.List;
  * 작성일 : 2021.10.31
  * 설명 : 제품 서비스 구현체
  */
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class ProductServiceImpl implements ProductService {
@@ -38,6 +40,9 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Product save(ProductDto productDto) {
         Product product = modelMapper.map(productDto, Product.class);
+        log.info("pr_name :{}", product.getPrName());
+        log.info("mo_name :{}", product.getMoName());
+
         return productRepository.save(product);
     }
 
