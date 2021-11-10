@@ -38,7 +38,6 @@ out/
 
 ### SETTING 제외 ###
 /gradlew
-/src/main/resources/application.yaml
 /settings.gradle
 /gradlew.bat
 /gradle/wrapper/gradle-wrapper.properties
