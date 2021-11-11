@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-public class CustomeBasicAuthenticationEntryPoint extends BasicAuthenticationEntryPoint {
+public class CustomBasicAuthenticationEntryPoint extends BasicAuthenticationEntryPoint {
 
 
     @Override
@@ -24,7 +24,7 @@ public class CustomeBasicAuthenticationEntryPoint extends BasicAuthenticationEnt
 
     @Override
     public void afterPropertiesSet() {
-        super.setRealmName("pilseong");
+        super.setRealmName("MapDuck");
         super.afterPropertiesSet();
     }
 }
