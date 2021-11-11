@@ -1,5 +1,6 @@
 package com.mapduck.security;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,6 +14,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+@Slf4j
 @EnableWebSecurity
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
@@ -28,6 +30,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
+                .antMatchers("/api/users").permitAll()
+                .antMatchers("/api/members/**").hasRole("MEMBER")
                 .antMatchers("/api/login").permitAll() // 로그인의 경우 아직 권한 취득 전이므로 모든 권한 허용
                 .antMatchers(HttpMethod.PUT,"/api/user").permitAll() // 회원가입의 경우 모든 권한 허용
                 .antMatchers("/api/product/danawa").hasRole("MEMBER") // 상품 등록의 경우 회원 가입된 유저만 허용
@@ -48,10 +52,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return authenticationProvider;
     }
 
-    public CustomeBasicAuthenticationEntryPoint authenticationEntryPoint(){
-        return new CustomeBasicAuthenticationEntryPoint();
+    @Bean
+    public CustomBasicAuthenticationEntryPoint authenticationEntryPoint(){
+        return new CustomBasicAuthenticationEntryPoint();
     }
 
+    @Bean
     public BCryptPasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }
