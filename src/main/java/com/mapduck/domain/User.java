@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 
 /**
@@ -30,23 +31,20 @@ public class User {
     @Column(name = "ID")
     private Long id;
 
-    @Column(name = "NAME", nullable = false)
-    private String name;
+    @Column(name = "USERNAME", nullable = false)
+    private String username;
     @Column(name = "EMAIL", nullable = false)
     private String email;
     @Column(name = "PASSWORD", nullable = false)
     private String password;
-    @Column(name = "PHONE", nullable = false)
-    private String phone;
 
-    @Column(name = "JOINED_AT")
-    private LocalDateTime joinedAt; // date?
-    @Column(name = "UPDATED_AT")
-    private LocalDateTime updatedAt; // date?
-
-    @ManyToOne(targetEntity = Role.class, fetch = FetchType.LAZY)
-    @JoinColumn(name = "ROLE")
-    private Role role;
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+        name = "USER_ROLES",
+        joinColumns = @JoinColumn(name= "USER_ID", referencedColumnName = "ID"),
+        inverseJoinColumns = @JoinColumn(name= "ROLE_ID", referencedColumnName = "ID")
+    )
+    List<Role> roles;
 
 
 }
