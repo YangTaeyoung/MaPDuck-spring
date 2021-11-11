@@ -1,0 +1,7 @@
+// 회원 가입을 위한 JSON 양식
+{
+  "name": "str", // 10자 이내
+  "email": "str", // 50자 이내
+  "password":"str", // 적절하게 frontend에서 조정
+  "phone":"str" // 13자 제한
+}
