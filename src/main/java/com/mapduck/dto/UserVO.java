@@ -4,28 +4,24 @@ import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import lombok.*;
 
+import java.util.List;
+
 /**
  * 작성자: 강동연
  * 작성일: 2021.11.3
  * 설명: UserDto
  */
 
-@NoArgsConstructor
-@AllArgsConstructor
+
 @Data
 @JsonNaming(value = PropertyNamingStrategies.SnakeCaseStrategy.class) // camelCase to snake
-public class UserDto {
+public class UserVO {
 
-    @NonNull
-    private String name;
-
-    @NonNull
+    private Long id;
+    private String username;
     private String email;
-
-    @NonNull
     private String password;
+    private List<String> roles;
 
-    @NonNull
-    private String phone;
-
+    private Boolean isEnable = true;
 }
