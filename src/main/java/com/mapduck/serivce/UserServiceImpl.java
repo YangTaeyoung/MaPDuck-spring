@@ -37,7 +37,6 @@ private static final Logger LOGGER = LoggerFactory.getLogger(UserServiceImpl.cla
 
 
     @Override
-
     public void save(UserVO userDto) {
         log.info("server: UserService save");
 
@@ -56,7 +55,7 @@ private static final Logger LOGGER = LoggerFactory.getLogger(UserServiceImpl.cla
         user.setPassword(this.passwordEncoder.encode(userDto.getPassword()));
 
 
-        Role role = this.roleRepository.findByRoleName("MEMBER");
+        Role role = this.roleRepository.findByRoleName("ROLE_MEMBER");
         user.setRoles(Arrays.asList(role));
         userDto.setRoles(Arrays.asList(role.getRoleName()));
 
