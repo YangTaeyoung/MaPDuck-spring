@@ -20,15 +20,6 @@ public class MemberServiceImpl implements MemberService{
 
 
     @Override
-    public List<Member> getMembers(String keyword) {
-        if(keyword == null || keyword.length() == 0) {
-            return this.memberRepository.findAll();
-        }else{
-            return this.memberRepository.search(keyword);
-        }
-    }
-
-    @Override
     public Member getMember(Long id) {
         Optional<Member> member = this.memberRepository.findById(id);
         if(member.isEmpty()){

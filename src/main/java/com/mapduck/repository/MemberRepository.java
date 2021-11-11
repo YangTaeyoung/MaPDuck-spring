@@ -7,7 +7,9 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
+/**
+ * member 관리를 위한 레파지토리
+ */
 public interface MemberRepository extends JpaRepository<Member, Long> {
-    @Query("from Member where name like concat('%',:keyword,'%')")
-    List<Member> search(@Param("keyword")String keyword);
+    public Member findByEmail(String email);
 }
