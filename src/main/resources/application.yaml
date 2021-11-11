@@ -1,7 +1,7 @@
 
 spring:
   datasource:
-    url: jdbc:mariadb://54.86.217.188:3306/MaPDuck
+    url: jdbc:mariadb://13.209.87.152:3306/MaPDuck
     driver-class-name: org.mariadb.jdbc.Driver
     username: mapduck
     password: mapduck2021
