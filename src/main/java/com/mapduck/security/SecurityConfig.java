@@ -30,12 +30,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/api/users").permitAll()
-                .antMatchers("/api/members/**").hasRole("MEMBER")
-                .antMatchers("/api/login").permitAll() // 로그인의 경우 아직 권한 취득 전이므로 모든 권한 허용
-                .antMatchers(HttpMethod.PUT,"/api/user").permitAll() // 회원가입의 경우 모든 권한 허용
-                .antMatchers("/api/product/danawa").hasRole("MEMBER") // 상품 등록의 경우 회원 가입된 유저만 허용
-                .antMatchers("api/product/myproduct").hasRole("MEMBER") // 내가 등록한 상품 가져오기의 경우 회원가입된 유저만 허용
+                .antMatchers(HttpMethod.POST,"/api/user").permitAll() // 회원 가입의 경우 모든 권한이 할 수 있게 허용
+                .anyRequest().hasRole("MEMBER")
                 .and()
                 .httpBasic().authenticationEntryPoint(authenticationEntryPoint()) // 로그인 실패에 따른 정보를 HTML 대신 JSON으로 변경하기 위해 설정
                 .and()
