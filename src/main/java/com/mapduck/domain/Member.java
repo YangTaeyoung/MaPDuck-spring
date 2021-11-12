@@ -28,12 +28,12 @@ public class Member {
     String email;
 
     @Column(name = "UPDATED_AT", columnDefinition = "datetime default now()")
-    LocalDateTime updatedAt;
+    LocalDateTime updatedAt= LocalDateTime.now();
 
     @Column(name = "JOINED_AT", columnDefinition = "datetime default now()")
-    LocalDateTime joinedAt;
+    LocalDateTime joinedAt = LocalDateTime.now();
 
-    @OneToMany
-    @JoinColumn(name = "OWNER")
-    List<Own> owns;
+//    @ManyToOne
+//    @JoinColumn(name = "OWNER")
+//    List<Own> owns;
 }

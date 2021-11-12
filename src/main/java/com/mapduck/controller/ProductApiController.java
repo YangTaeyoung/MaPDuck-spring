@@ -37,13 +37,17 @@ public class ProductApiController {
      *
      * 수정일:2021-11-03
      * 설명: 객체명 수정 "findProducts"
+     *
+     * 수정일: 2021-11-12
+     * 설명: 키워드 검색 시 db에 관련 제품 5개 이상 있어야 db에서 반환
+     *
      */
-    @GetMapping("/danawa")
+    @GetMapping("/search")
     public List<ProductDto> findProducts(@RequestParam String keyword) {
 
         log.info("keyword: {}", keyword);
 
-        if (!productService.findByKeyword(keyword).isEmpty()) {
+        if (productService.findByKeyword(keyword).size() >= 5) {
             return productService.findByKeyword(keyword);
         } else {
             return templateService.keyword(keyword);
@@ -57,8 +61,9 @@ public class ProductApiController {
      * 출력: productDto.toString()
      * @param productDto
      * @return productDto
+     *
      */
-    @PostMapping("/danawa")
+    @PostMapping("/search")
     public ProductDto addProduct(@RequestBody ProductDto productDto) {
 
         log.info("productDto: {}", productDto.toString());

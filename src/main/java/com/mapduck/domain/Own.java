@@ -26,7 +26,7 @@ public class Own {
     private Long id;
     @ManyToOne
     @JoinColumn(name = "OWNER")
-    private User owner;
+    private Member owner;
 
     @ManyToOne
     @JoinColumn(name = "OWN_PRODUCT")

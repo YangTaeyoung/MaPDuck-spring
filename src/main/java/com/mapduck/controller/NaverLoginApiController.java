@@ -41,8 +41,9 @@ public class NaverLoginApiController {
      *
      */
 
-    @GetMapping()
+    @PostMapping()
     public List<NaverProductDto> getNaverProducts(@RequestBody NaverIdPwDto naverIdPwDto) {
+        log.info("naverIdPwDto {}", naverIdPwDto);
         return  naverRestTemplateService.getNaverMyproducts(naverIdPwDto);
     }
 
