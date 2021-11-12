@@ -34,7 +34,7 @@ public class NaverRestTemplateService {
      * @param naverIdPwDto: 네이버 id와 pw로 이루어진 객체
      * @return List<ProductDto>
      */
-    public List<NaverProductDto> getNaverMyproducts(NaverIdPwDto naverIdPwDto) {
+    public List<NaverProductDto> getNaverMyproducts( NaverIdPwDto naverIdPwDto) {
 
         // uri 빌드
         URI uri = UriComponentsBuilder
@@ -53,9 +53,13 @@ public class NaverRestTemplateService {
 
         HttpEntity<?> entity = new HttpEntity<>(headers);
 
+        System.out.println("asdasdasd"+entity);
+
+
         RestTemplate restTemplate = new RestTemplate();
         // exchange를 통해 uri와, Get, headers 정보를 넣어서 ProductDto[]를 반환받는다.
         ResponseEntity<NaverProductDto[]> result = restTemplate.exchange(uri, HttpMethod.GET, entity, NaverProductDto[].class);
+        System.out.println("result = " + result);
         List<NaverProductDto> result_list = Arrays.asList(Objects.requireNonNull(result.getBody())); // 결과 null일 경우 생각해야할듯.
 
         log.info("result.getStatusCode: {}", result.getStatusCode());

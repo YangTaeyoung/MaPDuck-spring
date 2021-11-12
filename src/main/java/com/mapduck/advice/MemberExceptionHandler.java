@@ -10,10 +10,10 @@ import org.springframework.web.method.annotation.MethodArgumentTypeMismatchExcep
 
 @Slf4j
 @ControllerAdvice
-public class MemberExceptioHandler {
+public class MemberExceptionHandler {
     @ExceptionHandler
     public ResponseEntity<MemberErrorResponse> processError(Exception e){
-        log.error("Exception");
+        log.error("Exception", e);
         MemberErrorResponse response = new MemberErrorResponse();
         HttpStatus status;
 
