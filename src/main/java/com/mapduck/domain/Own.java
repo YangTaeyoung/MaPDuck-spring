@@ -1,6 +1,7 @@
 package com.mapduck.domain;
 
 import lombok.*;
+import org.apache.tomcat.jni.Local;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -24,18 +25,18 @@ public class Own {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "OWN_ID")
     private Long id;
+
     @ManyToOne
     @JoinColumn(name = "OWNER")
-    private User owner;
+    private Member owner;
 
     @ManyToOne
     @JoinColumn(name = "OWN_PRODUCT")
     private Product ownProduct;
 
     @Column(name="PURCHASED_AT")
-    private LocalDateTime purchasedAt; // date??
+    private LocalDateTime purchasedAt;
     @Column(name = "CREATED_AT")
-    private LocalDateTime createdAt; // date??
-
+    private LocalDateTime createdAt = LocalDateTime.now();
 
 }

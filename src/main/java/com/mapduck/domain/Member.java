@@ -27,11 +27,11 @@ public class Member {
     @Column(name = "EMAIL", unique = true)
     String email;
 
-    @Column(name = "UPDATED_AT", columnDefinition = "datetime default now()")
-    LocalDateTime updatedAt;
+    @Column(name = "UPDATED_AT", columnDefinition = "datetime default now()", nullable = false)
+    LocalDateTime updatedAt = LocalDateTime.now();
 
-    @Column(name = "JOINED_AT", columnDefinition = "datetime default now()")
-    LocalDateTime joinedAt;
+    @Column(name = "JOINED_AT", columnDefinition = "datetime default now()", nullable = false)
+    LocalDateTime joinedAt = LocalDateTime.now();
 
     @OneToMany
     @JoinColumn(name = "OWNER")

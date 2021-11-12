@@ -1,0 +1,10 @@
+{
+  "pr_name": "상품명: str",
+  "mo_name": "모델명: str",
+  "pr_company": {
+    "co_id": "회사 ID: Long",
+    "co_name": "회사명:str"
+  },
+  "description": "상품 설명: str",
+  "img_path": "이미지 경로: str"
+}
