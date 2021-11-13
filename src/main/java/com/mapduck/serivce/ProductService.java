@@ -12,6 +12,8 @@ import java.util.List;
  */
 public interface ProductService {
 
+    Product getById(Long id);
+    ProductDto entityToDto(Product product);
     Product save(ProductDto productDto);
     List<ProductDto> findByKeyword(String keyword);
 }
