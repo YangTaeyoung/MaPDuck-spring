@@ -27,6 +27,7 @@ import org.springframework.http.HttpStatus;
 @JsonIgnoreProperties(ignoreUnknown = true) // Json 입력값에 대해 Mapping시 클래스에 선언되지 않는 property는 무시
 @JsonNaming(value = PropertyNamingStrategies.SnakeCaseStrategy.class) // camelCase to snake
 public class ProductDto {
+    private Long prId;
     @NonNull
     private String prName;
     @NonNull
