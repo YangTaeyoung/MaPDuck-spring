@@ -17,7 +17,9 @@ import java.util.List;
  *
  */
 @Entity
-@Data
+@ToString
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "PRODUCT")
@@ -43,8 +45,9 @@ public class Product {
     @Column(name = "IMG_PATH")
     private String imgPath;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name="PR_ID")
+    @ToString.Exclude
     List<Warranty> warranties;
 
 }
