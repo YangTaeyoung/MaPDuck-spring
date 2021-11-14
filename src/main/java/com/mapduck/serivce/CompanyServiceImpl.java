@@ -23,4 +23,12 @@ public class CompanyServiceImpl implements CompanyService {
         companyDto.setCoName(company.getCoName());
         return companyDto;
     }
+
+    @Override
+    public Company dtoToEntity(CompanyDto companyDto){
+        var company = new Company();
+        company.setCoId(companyDto.getCoId());
+        company.setCoName(companyDto.getCoName());
+        return company;
+    }
 }
