@@ -1,10 +1,11 @@
 package com.mapduck.controller;
 
 import com.mapduck.domain.Member;
-import com.mapduck.domain.Own;
+import com.mapduck.dto.OwnReqDto;
+import com.mapduck.dto.OwnResDto;
 import com.mapduck.dto.ProductDto;
-import com.mapduck.repository.OwnRepository;
 import com.mapduck.serivce.MemberService;
+import com.mapduck.serivce.OwnService;
 import com.mapduck.serivce.ProductService;
 import com.mapduck.serivce.RestTemplateService;
 import lombok.RequiredArgsConstructor;
@@ -22,7 +23,7 @@ import java.util.List;
  * 작성자: 강동연
  * 작성일: 2021.10.31
  * 설명: ProductApi 컨트롤러
- * 
+ *
  * 수정일: 2021.11.02
  * 설명: ProductApiController로 변경
  */
@@ -35,23 +36,8 @@ public class ProductApiController {
 
     private final RestTemplateService templateService;
     private final ProductService productService;
-    private final OwnRepository ownRepository;
+    private final OwnService ownService;
     private final MemberService memberService;
-
-    /**
-     * 작성자: 양태영
-     * 작성일: 21.11.12
-     * 설명: 내 정보를 기반으로 내 정보와 내가 등록한 제품을 함께 가져오는 컨트롤러 함수
-     *
-     * @param meta
-     * @return ResponseEntity<Member>
-     */
-    @GetMapping("/myproducts")
-    @Transactional
-    public ResponseEntity<Member> myProducts(@AuthenticationPrincipal User meta) {
-        Member member = memberService.metaUserToMember(meta);
-        return new ResponseEntity<>(member, HttpStatus.OK);
-    }
 
     /**
      * 작성자: 강동연
@@ -82,6 +68,7 @@ public class ProductApiController {
      * 설명:제품 등록
      * 출력: productDto.toString()
      *
+     * 수정자: 양태영
      * 수정일: 21.11.11
      * 수정 내용: danawa는 Danawa라는 DB가 존재하지 않기 때문에 Product를 저장하는 것에 대해 의미가 맞지 않을 수 있음
      * 따라서 /product에서 끝나게 함으로써 의미를 맞춤.
@@ -89,7 +76,7 @@ public class ProductApiController {
      * @param productDto
      * @return productDto
      */
-    @PostMapping("/")
+    @PostMapping("")
     public ResponseEntity addProduct(@RequestBody ProductDto productDto) {
 
         log.info("productDto: {}", productDto.toString());
@@ -98,10 +85,58 @@ public class ProductApiController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
+    /**
+     * 작성자: 양태영
+     * 작성일: 21.11.14
+     * 설명: 로그인 정보를 토대로 테이블을 조회하며, 해당 조회한 사용자와 일치한 소유정보를 모두 가져오는 함수.
+     * @param metaUser
+     * @return
+     */
+    @GetMapping("/owns")
+    public ResponseEntity<List<OwnResDto>> getMyOwns(@AuthenticationPrincipal User metaUser){
+        Member loginedMember = memberService.metaUserToMember(metaUser);
+        List<OwnResDto> ownResDtos = ownService.getOwns(loginedMember);
+        return new ResponseEntity<>(ownResDtos, HttpStatus.OK);
+    }
+
+    /**
+     * 작성자: 양태영
+     * 작성일: 21.11.14
+     * 설명: request json을 받아 사용자의 소유 정보를 저장하는 컨트롤러 함수
+     * @param ownReqDto
+     * @return
+     */
+    @PostMapping("/own/")
+    public ResponseEntity addOwn(@RequestBody OwnReqDto ownReqDto){
+        var own = ownService.reqDtoToEntity(ownReqDto);
+        ownService.save(own);
+        return new ResponseEntity<>(HttpStatus.CREATED);
+    }
 
 
+    /**
+     * 작성자: 양태영
+     * 작성일: 21.11.13
+     * 설명: id를 통해 사용자의 상품 소유 정보를 불러옴
+     * @param id
+     * @return OwnResDto: 사용자의 소유 정보
+     */
+    @GetMapping("/own/{id}")
+    public ResponseEntity<OwnResDto> getOwn(@PathVariable("id") int id){
+        return new ResponseEntity<>(ownService.getResById((long) id), HttpStatus.OK);
+    }
 
-
-
+    /**
+     * 작성자: 양태영
+     * 작성일: 21.11.14
+     * 설명: own_id를 기준으로 테이블을 검색하고 삭제하는 함수
+     * @param id
+     * @return 다른 응답없이 Http status만 전송
+     */
+    @DeleteMapping("/own/{id}")
+    public ResponseEntity deleteOwn(@PathVariable("id") int id){
+        ownService.deleteById((long) id);
+        return new ResponseEntity<>(HttpStatus.ACCEPTED);
+    }
 
 }
