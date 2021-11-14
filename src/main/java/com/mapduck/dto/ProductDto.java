@@ -36,5 +36,5 @@ public class ProductDto {
     private CompanyDto prCompany;
     private String description;
     private String imgPath;
-
+    private WarrantyDto warrantyDto;
 }
