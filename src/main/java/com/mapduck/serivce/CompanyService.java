@@ -5,4 +5,5 @@ import com.mapduck.dto.CompanyDto;
 
 public interface CompanyService {
     CompanyDto entityToDto(Company company);
+    Company dtoToEntity(CompanyDto companyDto);
 }
