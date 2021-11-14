@@ -70,21 +70,6 @@ public class NaverLoginApiController {
 
     }
 
-    /**
-     * 작성자: 강동연
-     * 작성일: 2021.11.08
-     * 설명: 제품 DB 등록
-     * @param productDto
-     * @return productDto
-     */
-
-    @PostMapping("/myproducts")
-    public ProductDto addProduct(@RequestBody ProductDto productDto) {
-        productService.save(productDto);
-
-        return productDto;
-    }
-
 
 
 }
