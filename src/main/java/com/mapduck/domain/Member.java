@@ -32,7 +32,7 @@ public class Member {
 
     @Column(name = "JOINED_AT", columnDefinition = "datetime default now()", nullable = false)
     LocalDateTime joinedAt = LocalDateTime.now();
-
+  
     @OneToMany
     @JoinColumn(name = "OWNER")
     List<Own> owns;

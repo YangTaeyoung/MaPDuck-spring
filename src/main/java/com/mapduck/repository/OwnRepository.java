@@ -9,4 +9,5 @@ import java.util.List;
 
 public interface OwnRepository extends JpaRepository<Own, Long> {
     List<Own> findAllByOwner(Member member);
+
 }
