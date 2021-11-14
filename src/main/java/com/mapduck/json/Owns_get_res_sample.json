@@ -1,0 +1,40 @@
+[
+  {
+    "ownId": 15,
+    "purchaseAt": "2021-11-14T14:55:59",
+    "createdAt": "2021-11-15T00:30:20",
+    "ownProduct":{
+      "pr_id": 11,
+      "pr_name": "노트북",
+      "mo_name": "NT350XCR-AD5WA",
+      "pr_company":{"co_id": 7883, "co_name": "삼성전자"},
+      "description": "39.62cm(15.6인치) / 인텔 / 코어i5-10세대 / 코멧레이크 / i5-10210U (1.6GHz) / 쿼드코어 / 운영체제(OS): 미포함(프리도스) / 1920x1080(FHD) / 눈부심방지 / 슬림형 베젤 / DDR4 / 메모리: 8GB / M.2(NVMe) / 256GB / 내장그래픽 / UHD Graphics / 기가비트 유선랜 / 802.11ac(Wi-Fi 5) / HDMI / 웹캠 / USB-C: 지원 / USB 3.0 / USB 2.0 / MicroSD카드 / TPM / ㅗ형 방향키 / 숫자 키패드(3열) / 배터리: 43Wh / 어댑터: 40W / 충전단자: DC / 두께: 18.9mm / 무게: 1.81kg / 일반유통상품 / 용도: 사무/인강용 / 색상: 화이트",
+      "img_path": "http://img.danawa.com/prod_img/500000/655/781/img/11781655_1.jpg?shrink=330:330&_v=20210504094008",
+      "warranty_dto":{
+        "wrId": 3,
+        "prId": null,
+        "wrMonth": 12,
+        "count": 1
+      }
+    }
+  },
+  {
+    "ownId": 16,
+    "purchaseAt": "2021-11-14T14:55:59",
+    "createdAt": "2021-11-15T00:31:29",
+    "ownProduct":{
+      "pr_id": 11,
+      "pr_name": "노트북",
+      "mo_name": "NT350XCR-AD5WA",
+      "pr_company":{"co_id": 7883, "co_name": "삼성전자"},
+      "description": "39.62cm(15.6인치) / 인텔 / 코어i5-10세대 / 코멧레이크 / i5-10210U (1.6GHz) / 쿼드코어 / 운영체제(OS): 미포함(프리도스) / 1920x1080(FHD) / 눈부심방지 / 슬림형 베젤 / DDR4 / 메모리: 8GB / M.2(NVMe) / 256GB / 내장그래픽 / UHD Graphics / 기가비트 유선랜 / 802.11ac(Wi-Fi 5) / HDMI / 웹캠 / USB-C: 지원 / USB 3.0 / USB 2.0 / MicroSD카드 / TPM / ㅗ형 방향키 / 숫자 키패드(3열) / 배터리: 43Wh / 어댑터: 40W / 충전단자: DC / 두께: 18.9mm / 무게: 1.81kg / 일반유통상품 / 용도: 사무/인강용 / 색상: 화이트",
+      "img_path": "http://img.danawa.com/prod_img/500000/655/781/img/11781655_1.jpg?shrink=330:330&_v=20210504094008",
+      "warranty_dto":{
+        "wrId": 3,
+        "prId": null,
+        "wrMonth": 12,
+        "count": 1
+      }
+    }
+  }
+]
