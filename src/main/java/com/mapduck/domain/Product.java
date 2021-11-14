@@ -1,8 +1,10 @@
 package com.mapduck.domain;
 
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * 작성자: 강동연
@@ -41,5 +43,8 @@ public class Product {
     @Column(name = "IMG_PATH")
     private String imgPath;
 
+    @OneToMany
+    @JoinColumn(name="PR_ID")
+    List<Warranty> warranties;
 
 }

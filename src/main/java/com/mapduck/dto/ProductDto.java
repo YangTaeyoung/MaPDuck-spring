@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import lombok.*;
+import org.springframework.http.HttpStatus;
 
 /**
  * 작성자: 강동연
@@ -26,6 +27,7 @@ import lombok.*;
 @JsonIgnoreProperties(ignoreUnknown = true) // Json 입력값에 대해 Mapping시 클래스에 선언되지 않는 property는 무시
 @JsonNaming(value = PropertyNamingStrategies.SnakeCaseStrategy.class) // camelCase to snake
 public class ProductDto {
+    private Long prId;
     @NonNull
     private String prName;
     @NonNull
@@ -34,5 +36,5 @@ public class ProductDto {
     private CompanyDto prCompany;
     private String description;
     private String imgPath;
-
+    private WarrantyDto warrantyDto;
 }

@@ -3,9 +3,11 @@ package com.mapduck.serivce;
 import com.mapduck.domain.Member;
 import com.mapduck.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,7 +19,6 @@ public class MemberServiceImpl implements MemberService{
 
     @Autowired
     private RestTemplate restTemplate;
-
 
     @Override
     public Member getMember(Long id) {
@@ -37,5 +38,12 @@ public class MemberServiceImpl implements MemberService{
     public void deleteMember(Long id) {
         Member member = getMember(id);
         this.memberRepository.delete(member);
+    }
+
+    @Transactional
+    @Override
+    public Member metaUserToMember(User user) {
+        System.out.println(user.getUsername());
+       return memberRepository.findByEmail(user.getUsername());
     }
 }
