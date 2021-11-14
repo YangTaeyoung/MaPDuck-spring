@@ -24,6 +24,13 @@ public class CompanyServiceImpl implements CompanyService {
         return companyDto;
     }
 
+    /**
+     * 작성자: 양태영
+     * 작성일: 21.11.15
+     * 설명: DTO에서 Entity로 변환하는 매핑함수
+     * @param companyDto: 변환할 DTO 객체
+     * @return company: 변환될 Entity 객체
+     */
     @Override
     public Company dtoToEntity(CompanyDto companyDto){
         var company = new Company();
