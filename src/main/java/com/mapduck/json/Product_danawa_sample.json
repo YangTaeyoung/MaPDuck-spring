@@ -1,0 +1,19 @@
+[
+  {
+    "description": "string",
+    "img_path": "string",
+    "mo_name": "string",
+    "pr_company": {
+      "co_id": 0,
+      "co_name": "string"
+    },
+    "pr_id": 0,
+    "pr_name": "string",
+    "warranty_dto": {
+      "count": 0,
+      "prId": 0,
+      "wrId": 0,
+      "wrMonth": 0
+    }
+  }
+]
