@@ -39,6 +39,23 @@ public class ProductApiController {
     private final OwnService ownService;
     private final MemberService memberService;
 
+
+    /**
+     * 작성자: 강동연
+     * 작성일: 2021-11-14
+     * 설명: keyword를 통한 검색 시, db검색과 크롤링 분리
+     * @param keyword
+     * @return List<ProductDto> : 리스트 형식의 제품
+     *
+     */
+
+
+    @GetMapping
+    public List<ProductDto> findDbProduct(@RequestParam String keyword) {
+
+        return productService.findByKeyword(keyword);
+    }
+
     /**
      * 작성자: 강동연
      * 작성일 : 2021.10.31
@@ -49,17 +66,16 @@ public class ProductApiController {
      *
      * 수정일:2021-11-03
      * 설명: 객체명 수정 "findProducts"
+     *
+     *
+     * 수정일: 2021-11-14
+     * 설명: keyword를 통한 검색 시, db검색과 크롤링 분리
      */
+
     @GetMapping("/danawa")
     public List<ProductDto> findProducts(@RequestParam String keyword) {
 
-        log.info("keyword: {}", keyword);
-
-        if (!productService.findByKeyword(keyword).isEmpty()) {
-            return productService.findByKeyword(keyword);
-        } else {
-            return templateService.keyword(keyword);
-        }
+        return templateService.keyword(keyword);
     }
 
     /**
@@ -105,6 +121,7 @@ public class ProductApiController {
      * 설명: request json을 받아 사용자의 소유 정보를 저장하는 컨트롤러 함수
      * @param ownReqDto
      * @return
+     *
      */
     @PostMapping("/own/")
     public ResponseEntity addOwn(@RequestBody OwnReqDto ownReqDto){
