@@ -2,6 +2,7 @@ package com.mapduck.serivce;
 
 import com.mapduck.domain.Product;
 import com.mapduck.dto.ProductDto;
+import com.mapduck.dto.ProductReqDto;
 
 import java.util.List;
 
@@ -13,7 +14,7 @@ import java.util.List;
 public interface ProductService {
 
     Product getById(Long id);
-    ProductDto entityToDto(Product product);
-    Product save(ProductDto productDto);
+    ProductDto entityToResDto(Product product);
+    Product save(ProductReqDto productReqDto);
     List<ProductDto> findByKeyword(String keyword);
 }
