@@ -6,13 +6,15 @@ import com.mapduck.domain.Own;
 import com.mapduck.dto.*;
 import com.mapduck.repository.OwnRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpMethod;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class OwnServiceImpl implements OwnService {
@@ -33,7 +35,7 @@ public class OwnServiceImpl implements OwnService {
         OwnResDto ownResDto = new OwnResDto();
         ownResDto.setOwnId(own.getId());
         ownResDto.setPurchaseAt(own.getPurchasedAt());
-        ownResDto.setOwnProduct(productService.entityToDto(own.getOwnProduct()));
+        ownResDto.setOwnProduct(productService.entityToResDto(own.getOwnProduct()));
         ownResDto.setCreatedAt(own.getCreatedAt());
         return ownResDto;
     }
@@ -45,12 +47,18 @@ public class OwnServiceImpl implements OwnService {
      * @param ownReqDto: 변환 전 Request DTO
      * @return own: 변환될 entity
      */
+    @Transactional
     @Override
     public Own reqDtoToEntity(OwnReqDto ownReqDto){
         Own own = new Own();
-        own.setOwnProduct(productService.getById(ownReqDto.getPrId()));
+        var product = productService.getById(ownReqDto.getPrId());
+        var member = memberService.getMember(ownReqDto.getOwnerId());
+        log.info("OwnReqDto:{}", ownReqDto);
+        log.info("product: {}", product);
+        log.info("member: {}", member);
+        own.setOwnProduct(product);
         own.setPurchasedAt(ownReqDto.getPurchaseAt());
-        own.setOwner(memberService.getMember(ownReqDto.getOwnerId()));
+        own.setOwner(member);
         return own;
     }
 
@@ -101,6 +109,14 @@ public class OwnServiceImpl implements OwnService {
      * 설명: 엔티티를 저장하고 저장한 엔티티를 반환하는 함수
      * @param own: 저장할 own 엔티티
      * @return 저장후 엔티티 반환
+     */
+
+    /**
+     * 작성자: 양태영
+     * 작성일: 21.11.15
+     * 설명: own객체를 own 테이블에 저장하는 함수
+     * @param own: 저장할 own entity 객체
+     * @return own: 저장 후 own entity 객체(id가 부여됨)
      */
     @Override
     public Own save(Own own) {
