@@ -8,4 +8,5 @@ import java.util.List;
 public interface WarrantyService {
     WarrantyDto entityToDto (Warranty warranty);
     WarrantyDto getMaxWarrantyDto(List<Warranty> warranties);
+    Warranty save(Warranty warranty);
 }
