@@ -2,6 +2,7 @@ package com.mapduck.serivce;
 
 import com.mapduck.domain.Warranty;
 import com.mapduck.dto.WarrantyDto;
+import com.mapduck.repository.WarrantyRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -10,7 +11,15 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class WarrantyServiceImpl implements WarrantyService {
+    private final WarrantyRepository warrantyRepository;
 
+    /**
+     * 작성자: 양태영
+     * 작성일: 21.11.15
+     * 설명: 보증기간 entity객체에서 warrantyDto 객체로 변환하는 함수
+     * @param warranty: 변환할 warranty entity 객체
+     * @return warrantyDto: 변환 후의 Dto 객체
+     */
     @Override
     public WarrantyDto entityToDto(Warranty warranty) {
         WarrantyDto warrantyDto = new WarrantyDto();
@@ -46,5 +55,16 @@ public class WarrantyServiceImpl implements WarrantyService {
             return warrantyDto;
         }
         return null;
+    }
+
+    /**
+     * 작성자: 양태영
+     * 작성일: 21.11.15
+     * 설명: warranty entity객체를 받아 테이블에 저장하는 함수
+     * @param warranty: 저장할 Warranty entity 객체
+     * @return warranty: 저장 후 warranty entity 객체(id가 부여됨)
+     */
+    public Warranty save(Warranty warranty){
+        return warrantyRepository.save(warranty);
     }
 }
