@@ -2,9 +2,13 @@ package com.mapduck.serivce;
 
 import com.mapduck.domain.Warranty;
 import com.mapduck.dto.WarrantyDto;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
+@RequiredArgsConstructor
 public class WarrantyServiceImpl implements WarrantyService {
 
     @Override
