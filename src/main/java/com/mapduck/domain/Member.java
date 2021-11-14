@@ -11,6 +11,7 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
+@ToString
 @Table(name = "MEMBER")
 public class Member {
     @Id
@@ -33,7 +34,7 @@ public class Member {
     @Column(name = "JOINED_AT", columnDefinition = "datetime default now()", nullable = false)
     LocalDateTime joinedAt = LocalDateTime.now();
   
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "OWNER")
     List<Own> owns;
 }
