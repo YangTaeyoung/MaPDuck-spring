@@ -79,6 +79,9 @@ public class ProductServiceImpl implements ProductService {
      * 수정일: 21.11.07
      * 수정내용: DTO에 ModelMapper을 사용해 Entity로 변환한 후 저장할 수 있도록 변경.
      *
+     * 수정자: 강동연
+     * 수정일:21.11.15
+     * 수정내용: 보장 기간 공백 시 저장 하지 않는 로직 추가
      */
     @Transactional
     @Override
@@ -86,11 +89,15 @@ public class ProductServiceImpl implements ProductService {
         Product product = reqDtoToEntity(productReqDto);
         product = productRepository.save(product);
         log.info("saved prId: {}", product.getPrId());
-        Warranty warranty = new Warranty();
-        warranty.setPrId(product);
-        warranty.setCount(1);
-        warranty.setMonth(productReqDto.getWrMonth());
-        warrantyService.save(warranty);
+
+        if (productReqDto.getWrMonth() != 0) {
+            Warranty warranty = new Warranty();
+            warranty.setPrId(product);
+            warranty.setCount(1);
+            warranty.setMonth(productReqDto.getWrMonth());
+            warrantyService.save(warranty);
+        }
+
         return productRepository.save(product);
     }
 
