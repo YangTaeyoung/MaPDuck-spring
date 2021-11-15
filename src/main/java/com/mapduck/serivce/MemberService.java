@@ -10,4 +10,6 @@ public interface MemberService {
     void saveMember(Member member);
     void deleteMember(Long id);
     Member metaUserToMember(User user);
+    boolean checkEmail(String email);
+    boolean checkPhone(String phone);
 }
