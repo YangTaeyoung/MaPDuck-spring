@@ -18,7 +18,6 @@ public class MemberServiceImpl implements MemberService{
 
 
     private final MemberRepository memberRepository;
-    private final  RestTemplate restTemplate;
 
     @Override
     public Member getMember(Long id) {
@@ -55,7 +54,31 @@ public class MemberServiceImpl implements MemberService{
     @Transactional
     @Override
     public Member metaUserToMember(User user) {
-        System.out.println(user.getUsername());
        return memberRepository.findByEmail(user.getUsername());
+    }
+
+    /**
+     * 작성자: 양태영
+     * 작성일: 21.11.15
+     * 설명: 동일한 이메일이 DB에 있는지 확인하는 함수 없으면 True, 중복이면 False
+     * @param email: 체크할 이메일
+     * @return true: 동일한 이메일이 없음, false: 동일한 이메일이 존재함.
+     */
+    @Override
+    public boolean checkEmail(String email) {
+        Member member = memberRepository.findByEmail(email);
+        return member != null;
+    }
+    /**
+     * 작성자: 양태영
+     * 작성일: 21.11.15
+     * 설명: 동일한 핸드폰이 DB에 있는지 확인하는 함수 없으면 True, 중복이면 False
+     * @param phone: 체크할 이메일
+     * @return true: 동일한 이메일이 없음, false: 동일한 핸드폰이 존재함.
+     */
+    @Override
+    public boolean checkPhone(String phone) {
+        Member member = memberRepository.findByPhone(phone);
+        return member != null;
     }
 }
