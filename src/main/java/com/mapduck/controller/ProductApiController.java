@@ -81,7 +81,7 @@ public class ProductApiController {
     @PostMapping("/search")
     public ResponseEntity addProduct(@RequestBody ProductReqDto productReqDto) {
 
-        log.info("productDto: {}", productReqDto.toString());
+
         productService.save(productReqDto);
 
         return new ResponseEntity<>(HttpStatus.CREATED);
