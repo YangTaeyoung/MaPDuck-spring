@@ -13,7 +13,9 @@ import java.util.List;
 @RequiredArgsConstructor
 public class WarrantyServiceImpl implements WarrantyService {
     private final WarrantyRepository warrantyRepository;
+
     private final ProductService productService;
+  
     /**
      * 작성자: 양태영
      * 작성일: 21.11.15
@@ -54,6 +56,7 @@ public class WarrantyServiceImpl implements WarrantyService {
         }
         return warranty;
     }
+
 
     /**
      * 작성자: 양태영
@@ -107,4 +110,5 @@ public class WarrantyServiceImpl implements WarrantyService {
         }
         return warrantyRepository.save(warranty);
     }
+
 }
