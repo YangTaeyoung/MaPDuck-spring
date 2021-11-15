@@ -67,7 +67,7 @@ public class MemberServiceImpl implements MemberService{
     @Override
     public boolean checkEmail(String email) {
         Member member = memberRepository.findByEmail(email);
-        return member != null;
+        return member == null;
     }
     /**
      * 작성자: 양태영
@@ -79,6 +79,6 @@ public class MemberServiceImpl implements MemberService{
     @Override
     public boolean checkPhone(String phone) {
         Member member = memberRepository.findByPhone(phone);
-        return member != null;
+        return member == null;
     }
 }

@@ -1,14 +1,10 @@
 package com.mapduck.controller;
 
 import com.mapduck.domain.Member;
-import com.mapduck.dto.OwnReqDto;
-import com.mapduck.dto.OwnResDto;
-import com.mapduck.dto.ProductDto;
-import com.mapduck.dto.ProductReqDto;
-import com.mapduck.serivce.MemberService;
-import com.mapduck.serivce.OwnService;
-import com.mapduck.serivce.ProductService;
-import com.mapduck.serivce.RestTemplateService;
+
+import com.mapduck.dto.*;
+import com.mapduck.serivce.*;
+
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -34,7 +30,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ProductApiController {
 
-
+    private final WarrantyService warrantyService;
     private final RestTemplateService templateService;
     private final ProductService productService;
     private final OwnService ownService;
@@ -147,6 +143,20 @@ public class ProductApiController {
     public ResponseEntity deleteOwn(@PathVariable("id") int id) {
         ownService.deleteById((long) id);
         return new ResponseEntity<>(HttpStatus.ACCEPTED);
+    }
+
+
+    /**
+     * 작성자: 양태영
+     * 작성일: 21.11.15
+     * 설명: Request DTO를 입력받아 해당 상품 정보와 개월이 존재하면 Count+1을 하고 없으면 새로 보증기간을 저장
+     * @param warrantyReqDto: 삽입할 RequestDto 객체
+     * @return 생성되었다는 상태만 반환
+     */
+    @PostMapping("/warranty")
+    public ResponseEntity addWarranty(@RequestBody WarrantyReqDto warrantyReqDto){
+        warrantyService.saveOrUpdate(warrantyReqDto);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
 }

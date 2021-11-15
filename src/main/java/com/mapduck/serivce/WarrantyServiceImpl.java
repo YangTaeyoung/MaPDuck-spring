@@ -2,6 +2,7 @@ package com.mapduck.serivce;
 
 import com.mapduck.domain.Warranty;
 import com.mapduck.dto.WarrantyDto;
+import com.mapduck.dto.WarrantyReqDto;
 import com.mapduck.repository.WarrantyRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,8 @@ import java.util.List;
 public class WarrantyServiceImpl implements WarrantyService {
     private final WarrantyRepository warrantyRepository;
 
+    private final ProductService productService;
+  
     /**
      * 작성자: 양태영
      * 작성일: 21.11.15
@@ -41,6 +44,19 @@ public class WarrantyServiceImpl implements WarrantyService {
         var warranty = warrantyRepository.findFirstByPrId_PrIdAndMonth(warrantyDto.getPrId(), warrantyDto.getWrMonth());
         return warranty;
     }
+
+    @Override
+    public Warranty reqDtoToEntity(WarrantyReqDto warrantyReqDto) {
+        Warranty warranty = warrantyRepository.findFirstByPrId_PrIdAndMonth(warrantyReqDto.getPrId(), warrantyReqDto.getWrMonth());
+        if(warranty == null)
+        {
+            warranty = new Warranty();
+            warranty.setMonth(warrantyReqDto.getWrMonth());
+            warranty.setPrId(productService.getById(warrantyReqDto.getPrId()));
+        }
+        return warranty;
+    }
+
 
     /**
      * 작성자: 양태영
@@ -80,4 +96,19 @@ public class WarrantyServiceImpl implements WarrantyService {
     public Warranty save(Warranty warranty){
         return warrantyRepository.save(warranty);
     }
+
+    public Warranty saveOrUpdate(WarrantyReqDto warrantyReqDto){
+        Warranty warranty = warrantyRepository.findFirstByPrId_PrIdAndMonth(warrantyReqDto.getPrId(), warrantyReqDto.getWrMonth());
+        if(warranty == null){
+            warranty = new Warranty();
+            warranty.setPrId(productService.getById(warrantyReqDto.getPrId()));
+            warranty.setMonth(warrantyReqDto.getWrMonth());
+            warranty.setCount(1);
+        }
+        else{
+            warranty.setCount(warranty.getCount()+1);
+        }
+        return warrantyRepository.save(warranty);
+    }
+
 }
