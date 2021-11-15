@@ -70,9 +70,13 @@ public class ProductApiController {
      *
      * 수정일: 2021-11-14
      * 설명: keyword를 통한 검색 시, db검색과 크롤링 분리
+     *
+     * 수정일: 2021-11-15
+     * 설명: danawa -> search(URI)
+     *
      */
 
-    @GetMapping("/danawa")
+    @GetMapping("/search")
     public List<ProductDto> findProducts(@RequestParam String keyword) {
 
         return templateService.keyword(keyword);
@@ -91,8 +95,10 @@ public class ProductApiController {
      *
      * @param productDto
      * @return productDto
-     */
-    @PostMapping("")
+     *
+     * 수정일: 21.11.15
+     * 수정내용: URI /search로 변경경     */
+    @PostMapping("/search")
     public ResponseEntity addProduct(@RequestBody ProductDto productDto) {
 
         log.info("productDto: {}", productDto.toString());

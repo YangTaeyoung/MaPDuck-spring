@@ -48,8 +48,8 @@ public class NaverRestTemplateService {
 
         // Id와 pw의 정보를 headers에 저장
         MultiValueMap<String, String> headers = new LinkedMultiValueMap<>();
-        headers.add("id", naverIdPwDto.getId());
-        headers.add("password", naverIdPwDto.getPassword());
+        headers.add("naver-id", naverIdPwDto.getId());
+        headers.add("naver-pw", naverIdPwDto.getPassword());
 
         HttpEntity<?> entity = new HttpEntity<>(headers);
 

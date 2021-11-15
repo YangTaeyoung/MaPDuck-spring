@@ -58,17 +58,29 @@ public class NaverLoginApiController {
      * 수정사항: NaverProductDto -> productDto 변환 후 다나와 or db 검색 후 반환
      *
      *
+     * 수정일: 2021.11.14
+     * 수정사항: naver 검색 로직 분리, addproduct -> searchProduct 저장이 아닌 검색임으로 의미가 맞지 않아 변경
      */
 
     @GetMapping("/myproducts")
-    public List<ProductDto> addNaverProduct(@RequestBody NaverProductDto naverProductDto) {
+    public List<ProductDto> searchProduct(@RequestBody NaverProductDto naverProductDto) {
 
-        if (!productService.findByKeyword(naverProductDto.getTitle()).isEmpty()) {
-            return productService.findByKeyword(naverProductDto.getTitle());
-        } else {
-            return restTemplateService.keyword(naverProductDto.getTitle());
-        }
 
+        return productService.findByKeyword(naverProductDto.getMoName());
+
+    }
+
+    /**
+     * 작성자: 강동연
+     * 작성일: 2021.11.14
+     * 설명: naver 검색 로직 분리
+     * @param naverProductDto
+     * @return
+     */
+
+    @GetMapping("/myproducts/from-web")
+    public List<ProductDto> searchProductByDanawa(@RequestBody NaverProductDto naverProductDto) {
+        return restTemplateService.keyword(naverProductDto.getMoName());
     }
 
     /**
