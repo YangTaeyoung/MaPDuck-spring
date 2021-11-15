@@ -31,6 +31,19 @@ public class WarrantyServiceImpl implements WarrantyService {
 
     /**
      * 작성자: 양태영
+     * 작성일: 21.11.15
+     * 설명: dto에서 Entity 객체로 변환하는 함수
+     * @param warrantyDto: 변환할 DTO객체
+     * @return 변환된 Warranty객체
+     */
+    @Override
+    public Warranty dtoToEntity(WarrantyDto warrantyDto) {
+        var warranty = warrantyRepository.findFirstByPrId_PrIdAndMonth(warrantyDto.getPrId(), warrantyDto.getWrMonth());
+        return warranty;
+    }
+
+    /**
+     * 작성자: 양태영
      * 작성일: 21.11.13
      * 설명: 사람들이 가장 많이 등록한 횟수의 워런티를 Dto로 변경하여 반환
      * @param warranties: 카운트가 맥스인 것을 고를 타겟 워런티 리스트
