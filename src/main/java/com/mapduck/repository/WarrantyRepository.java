@@ -10,4 +10,5 @@ import java.util.List;
 @Repository
 public interface WarrantyRepository extends JpaRepository<Warranty, Long> {
     List<Warranty> findAllByPrId_PrIdAndMonth(Long prId, Integer month);
+    Warranty findFirstByPrId_PrIdAndMonth(Long prId_prId, Integer month);
 }
