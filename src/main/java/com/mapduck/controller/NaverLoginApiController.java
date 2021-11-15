@@ -66,7 +66,7 @@ public class NaverLoginApiController {
     public List<ProductDto> searchProduct(@RequestBody NaverProductDto naverProductDto) {
 
 
-        return productService.findByKeyword(naverProductDto.getTitle());
+        return productService.findByKeyword(naverProductDto.getMoName());
 
     }
 
@@ -78,9 +78,9 @@ public class NaverLoginApiController {
      * @return
      */
 
-    @GetMapping("/myproducts/danawa")
+    @GetMapping("/myproducts/from-web")
     public List<ProductDto> searchProductByDanawa(@RequestBody NaverProductDto naverProductDto) {
-        return restTemplateService.keyword(naverProductDto.getTitle());
+        return restTemplateService.keyword(naverProductDto.getMoName());
     }
 
     /**
