@@ -77,13 +77,13 @@ public class ProductApiController {
      * 수정 내용: danawa는 Danawa라는 DB가 존재하지 않기 때문에 Product를 저장하는 것에 대해 의미가 맞지 않을 수 있음
      * 따라서 /product에서 끝나게 함으로써 의미를 맞춤.
      *
-     * @param productDto
-     * @return productDto
+     * @param productReqDto: 새로 추가할 제품 RequestDto
+     * @return 생성되었다는 상태만 반환
      *
      * 수정일: 21.11.15
      * 수정내용: URI /search로 변경경     */
     @PostMapping("/search")
-    public ResponseEntity addProduct(@RequestBody ProductReqDto productDto) {
+    public ResponseEntity addProduct(@RequestBody ProductReqDto productReqDto) {
 
         log.info("productDto: {}", productReqDto.toString());
         productService.save(productReqDto);
@@ -127,7 +127,7 @@ public class ProductApiController {
      * 작성자: 양태영
      * 작성일: 21.11.13
      * 설명: id를 통해 사용자의 상품 소유 정보를 불러옴
-     * @param id
+     * @param id: 조회할 own Id
      * @return OwnResDto: 사용자의 소유 정보
      */
     @GetMapping("/own/{id}")
@@ -140,7 +140,7 @@ public class ProductApiController {
      * 작성일: 21.11.14
      * 설명: own_id를 기준으로 테이블을 검색하고 삭제하는 함수
      *
-     * @param id
+     * @param id: 삭제할 소유 id
      * @return 다른 응답없이 Http status만 전송
      */
     @DeleteMapping("/own/{id}")
