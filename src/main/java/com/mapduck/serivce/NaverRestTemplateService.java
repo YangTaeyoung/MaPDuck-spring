@@ -52,18 +52,10 @@ public class NaverRestTemplateService {
         headers.add("naver-pw", naverIdPwDto.getPassword());
 
         HttpEntity<?> entity = new HttpEntity<>(headers);
-
-        System.out.println("asdasdasd"+entity);
-
-
         RestTemplate restTemplate = new RestTemplate();
         // exchange를 통해 uri와, Get, headers 정보를 넣어서 ProductDto[]를 반환받는다.
         ResponseEntity<NaverProductDto[]> result = restTemplate.exchange(uri, HttpMethod.GET, entity, NaverProductDto[].class);
-        System.out.println("result = " + result);
-        List<NaverProductDto> result_list = Arrays.asList(Objects.requireNonNull(result.getBody())); // 결과 null일 경우 생각해야할듯.
-
-        log.info("result.getStatusCode: {}", result.getStatusCode());
-
+        List<NaverProductDto> result_list = Arrays.asList(Objects.requireNonNull(result.getBody()));
         return result_list;
     }
 }
