@@ -26,7 +26,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth.authenticationProvider(authenticationProvider());
     }
 
-    /**
+    /**test
      * 작성자: 양태영
      * 작성일: 21.11.16
      * 설명: 보안이 적용되는 URL 설정
