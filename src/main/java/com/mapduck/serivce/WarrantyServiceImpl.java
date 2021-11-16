@@ -3,6 +3,7 @@ package com.mapduck.serivce;
 import com.mapduck.domain.Warranty;
 import com.mapduck.dto.WarrantyDto;
 import com.mapduck.dto.WarrantyReqDto;
+import com.mapduck.repository.ProductRepository;
 import com.mapduck.repository.WarrantyRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -13,8 +14,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class WarrantyServiceImpl implements WarrantyService {
     private final WarrantyRepository warrantyRepository;
-
-    private final ProductService productService;
+    private final ProductRepository productRepository;
   
     /**
      * 작성자: 양태영
@@ -52,7 +52,7 @@ public class WarrantyServiceImpl implements WarrantyService {
         {
             warranty = new Warranty();
             warranty.setMonth(warrantyReqDto.getWrMonth());
-            warranty.setPrId(productService.getById(warrantyReqDto.getPrId()));
+            warranty.setPrId(productRepository.getById(warrantyReqDto.getPrId()));
         }
         return warranty;
     }
@@ -101,7 +101,7 @@ public class WarrantyServiceImpl implements WarrantyService {
         Warranty warranty = warrantyRepository.findFirstByPrId_PrIdAndMonth(warrantyReqDto.getPrId(), warrantyReqDto.getWrMonth());
         if(warranty == null){
             warranty = new Warranty();
-            warranty.setPrId(productService.getById(warrantyReqDto.getPrId()));
+            warranty.setPrId(productRepository.getById(warrantyReqDto.getPrId()));
             warranty.setMonth(warrantyReqDto.getWrMonth());
             warranty.setCount(1);
         }
