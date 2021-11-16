@@ -60,7 +60,10 @@ public class ProductApiController {
      *
      */
 
-    @Operation(summary = "다나와 크롤링을 통해 상품을 검색하는 API", description = "기존 DB에 사용자가 검색한 상품이 없을 때 호출하길 바람")
+    @Operation(
+            summary = "다나와 크롤링을 통해 상품을 검색하는 API",
+            description = "기존 DB에 사용자가 검색한 상품이 없을 때 호출하길 바람"
+    )
     @GetMapping("/search")
     public List<ProductDto> findProducts(
             @Parameter(description = "검색할 키워드: 사용자가 입력한 검색어")
