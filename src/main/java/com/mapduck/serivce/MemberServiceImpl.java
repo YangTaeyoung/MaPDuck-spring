@@ -1,6 +1,7 @@
 package com.mapduck.serivce;
 
 import com.mapduck.domain.Member;
+import com.mapduck.dto.MemberResDto;
 import com.mapduck.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -80,5 +81,14 @@ public class MemberServiceImpl implements MemberService{
     public boolean checkPhone(String phone) {
         Member member = memberRepository.findByPhone(phone);
         return member == null;
+    }
+    @Override
+    public  MemberResDto memberToMemberResDto(Member member){
+        var memberResDto = new MemberResDto();
+        memberResDto.setId(member.getId());
+        memberResDto.setName(member.getName());
+        memberResDto.setPhone(member.getPhone());
+        memberResDto.setEmail(member.getEmail());
+        return memberResDto;
     }
 }

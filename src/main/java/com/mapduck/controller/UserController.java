@@ -1,8 +1,8 @@
 package com.mapduck.controller;
 
 import com.mapduck.domain.Member;
-import com.mapduck.domain.User;
 import com.mapduck.dto.JoinFormDto;
+import com.mapduck.dto.MemberResDto;
 import com.mapduck.dto.UserVO;
 import com.mapduck.mapper.JoinMapper;
 import com.mapduck.serivce.MemberService;
@@ -14,6 +14,8 @@ import lombok.RequiredArgsConstructor;
 import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
@@ -75,5 +77,22 @@ public class UserController {
         var validation = new HashMap<String, Boolean>();
         validation.put("chk_value", memberService.checkPhone(decodedPhone));
         return new ResponseEntity<>(validation, HttpStatus.OK);
+    }
+
+
+    /**
+     * 작성자:양태영
+     * 작성일: 21.11.17
+     * 설명: 로그인한 회원의 정보를 취득하는 API
+     * @param user: 헤더에서 자동적으로 획득하는 회원의 정보
+     * @return memberResDto: JSON형태로 반환할 회원의 정보.
+     */
+    @Operation(
+            summary = "로그인한 회원의 정보를 가져오는 API",
+            description = "해당함수는 로그인한 정보를 자동적으로 취득하기 때문에 헤더 외의 파라미터를 보내지 말 것."
+    )
+    @GetMapping("/login")
+    public MemberResDto getLoginedMember(@AuthenticationPrincipal User user){
+        return memberService.memberToMemberResDto(memberService.metaUserToMember(user));
     }
 }
