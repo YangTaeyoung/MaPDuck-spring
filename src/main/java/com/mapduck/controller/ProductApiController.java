@@ -2,6 +2,7 @@ package com.mapduck.controller;
 
 import com.mapduck.domain.Member;
 
+import com.mapduck.domain.Product;
 import com.mapduck.dto.*;
 import com.mapduck.serivce.*;
 
@@ -92,11 +93,11 @@ public class ProductApiController {
             summary = "사용자가 상품리스트에서 선택한 상품을 DB에 추가하는 API",
             description = "사용자가 선택한 상품의 정보를 JSON형태로 받아 Product DB에 저장함"
     )
-    @PostMapping("/search")
-    public ResponseEntity addProduct(@RequestBody ProductReqDto productReqDto) {
-        productService.save(productReqDto);
-
-        return new ResponseEntity<>(HttpStatus.CREATED);
+    @PostMapping("")
+    public ResponseEntity<ProductDto> addProduct(@RequestBody ProductReqDto productReqDto) {
+        Product product = productService.save(productReqDto);
+        var productDto = productService.entityToResDto(product);
+        return new ResponseEntity<>(productDto, HttpStatus.CREATED);
     }
 
     /**
@@ -194,4 +195,19 @@ public class ProductApiController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
+    /**
+     * @author 양태영
+     * @date 21.11.18
+     * @description 상품을 DB에서 검색하여 리스트 형태로 반환하는 API
+     * @param keyword: 검색할 키워드
+     * @return 검색을 통한 상품 리스트 목록
+     */
+    @Operation(
+            summary = "상품을 DB에서 검색하여 리스트 형태로 반환하는 API",
+            description = "쿼리 파라미터를 통해 검색어를 입력 받은 뒤 DB에서 검색한 후 반환한다."
+    )
+    @GetMapping("")
+    public ResponseEntity<List<ProductDto>> getByKeyword(@RequestParam("keyword") String keyword){
+        return new ResponseEntity<>(productService.findByKeyword(keyword), HttpStatus.OK);
+    }
 }
