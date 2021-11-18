@@ -41,6 +41,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.POST,"/api/user").permitAll() // 회원 가입의 경우 모든 권한이 할 수 있게 허용
                 .antMatchers(HttpMethod.GET, "/api/user/chke").permitAll() // 이메일 중복 확인의 경우 모든 권한이 할 수 있게 허용
                 .antMatchers(HttpMethod.GET, "/api/user/chkp").permitAll() // 핸드폰 중복 확인의 경우 모든 권한이 할 수 있게 허용
+                .antMatchers("/swagger-ui/").permitAll()
                 .anyRequest().hasRole("MEMBER")
                 .and()
                 .httpBasic().authenticationEntryPoint(authenticationEntryPoint()) // 로그인 실패에 따른 정보를 HTML 대신 JSON으로 변경하기 위해 설정
