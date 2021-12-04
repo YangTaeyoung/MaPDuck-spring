@@ -6,5 +6,7 @@ MaPDuck-django와 server to server 통신을 수행하며, django에서는 크�
 ## 해당 사이트에 배포되어 있으며, 누구나 회원가입을 통해 해당 API를 활용·사용할 수 있습니다
 
 [바로가기](https://www.mapduck.shop/swagger-ui/,"mapduck_link")
+
 *ID: test
+
 *PW: test
