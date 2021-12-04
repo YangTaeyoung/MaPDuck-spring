@@ -7,5 +7,5 @@ MaPDuck-django와 server to server 통신을 수행하며, django에서는 크�
 
 [바로가기](https://www.mapduck.shop/swagger-ui/,"mapduck_link")
 
-*ID: test*
+*ID: test*   
 *PW: test*
