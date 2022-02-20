@@ -11,6 +11,12 @@
 
 <hr/>
 
+## DB Structure
+
+> DB의 구성은 다음과 같습니다.
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a6fff93b-aa1f-4921-b4c1-90ba76aeb07b/Untitled.png)
+
 ## 서비스 흐름도
 > 전반적인 서비스의 흐름은 다음을 따릅니다.
 
