@@ -21,7 +21,9 @@
 > 전반적인 서비스의 흐름은 다음을 따릅니다.
 
 #### 사용자가 직접 제품을 검색했을 때의 서비스 흐름
-![image](https://user-images.githubusercontent.com/59782504/154843643-c747c5ba-0b8e-4a7e-a1df-50f3166add41.png)
+
+![image](https://user-images.githubusercontent.com/59782504/154848571-785c966d-5892-4d9c-8384-de7be22e2196.png)
+
 
 
 ~~## 해당 사이트에 배포되어 있으며, 누구나 회원가입을 통해 해당 API를 활용·사용할 수 있습니다~~
