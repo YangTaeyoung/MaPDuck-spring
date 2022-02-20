@@ -15,7 +15,7 @@
 
 > DB의 구성은 다음과 같습니다.
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a6fff93b-aa1f-4921-b4c1-90ba76aeb07b/Untitled.png)
+![Untitled](https://user-images.githubusercontent.com/59782504/154844242-464a9878-e643-4ec0-b131-206a5c797f5b.png)
 
 ## 서비스 흐름도
 > 전반적인 서비스의 흐름은 다음을 따릅니다.
@@ -24,13 +24,14 @@
 ![image](https://user-images.githubusercontent.com/59782504/154843643-c747c5ba-0b8e-4a7e-a1df-50f3166add41.png)
 
 
+~~## 해당 사이트에 배포되어 있으며, 누구나 회원가입을 통해 해당 API를 활용·사용할 수 있습니다~~
 
-## 해당 사이트에 배포되어 있으며, 누구나 회원가입을 통해 해당 API를 활용·사용할 수 있습니다
+~~[바로가기](https://www.mapduck.shop/swagger-ui/)~~
 
-[바로가기](https://www.mapduck.shop/swagger-ui/)
+> AWS요금 문제로 해당 API는 로컬형식으로만 배포됩니다.
 
-*ID: test*   
-*PW: test*
+> 이후 사용법을 같이 기재하겠습니다.
+
 
 <hr/>
 
